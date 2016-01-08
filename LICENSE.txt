@@ -39,7 +39,7 @@ GPLライセンス、MITライセンス及び後記のクローズドライセ�
 
 The MIT License (MIT)
 
-Copyright (c) 2016 EC-CUBE
+Copyright (c) 2016 LOCKON CO.,LTD. All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
