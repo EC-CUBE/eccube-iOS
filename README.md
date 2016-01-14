@@ -24,7 +24,7 @@ maximize the potential of mobile shoppers.
 
 ### 概要
 
-EC-CUBE3系で運営するショップを Android のアプリとして連携することができます
+EC-CUBE3系で運営するショップを iOS のアプリとして連携することができます
 
 プッシュ通知を受信するための例として [「Appiaries プッシュ通知プラグイン」](http://www.ec-cube.net/products/detail.php?product_id=1030) を用いた仕組みを実装していますが、それ以外のサービスを利用することも可能です。
 
