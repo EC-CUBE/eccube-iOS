@@ -41,7 +41,8 @@ xcode プロジェクトです。git clone でローカルにソースコード�
 Bundle Identifier の変更は xcode に一般的な方法でおこなわれますが、以下に作業の流れを要約します。
 
 1. xcode でプロジェクトを選択します。
-2. 右上にある Identity and Type で新しいプロジェクト名を指定します。
+2. 右上にある Identity and Type で新しいプロジェクト名を指定します。  
+（エラーになる場合は xcode を最新版にして下さい）
 3. 差分が表示されるので Rename を押下します。
 4. Product > Scheme > Manage Schemes を開き、Name に新しいプロジェクト名を指定して OK を押下します。
 5. 左上の + を押下し、新しいプロジェクト名を追加します。
@@ -54,7 +55,9 @@ Bundle Identifier の変更は xcode に一般的な方法でおこなわれま�
 アプリと連携するショップの URL を設定します。
 
 1. WebViewController.m を開きます。
-2. kDefaultStartUrl にすでに設定されている www.ec-cube.net を店舗のウェブサイトの URL に書き換えます。
+2. kDefaultStartUrl にすでに設定されている example.com をショップのウェブサイトの URL に書き換えます。
+3. Info.plist に設定されている example.com をショップの URL に書き換えます。  
+（ATS に対応しないサイトの場合は記述を書き換える必要があります）
 
 ### スプラッシュ画像を変更する
 
@@ -90,13 +93,18 @@ Assets.xcassets/tab_user_on.imageset
 
 GCM とアピアリーズに登録し、それぞれの情報をプラグインに設定する方法については[「Appiaries プッシュ通知プラグイン」](http://www.ec-cube.net/products/detail.php?product_id=1030) をインストールした後でプラグインの「設定」ページに詳細がありますのでそちらを参照して下さい。  
 
-プラグインの設定の完了後、本アプリがアピアリーズと連携するための値は  AppDelegate.m に記述します。
+プラグインの設定の完了後、SDK をプロジェクトに追加し、コメントアウトを外し、必要なパラメータを設定する必要があります。
 
-1. AppDelegate.m を開きます。
-2. アピアリーズで契約した**「データストア ID」**を baas.config.datastoreID 設定します。
-3. アピアリーズで登録した**「アプリ ID」**を baas.config.applicationID 設定します。
-4. アピアリーズで登録したアプリの**「アプリトークン」**を baas.config.applicationToken 設定します。
-5. その他、ソース上の//@FIXME:で書いているソースのコメントアウトを外します。
+1. Appiaries 公式ウェブサイトから iOS SDK を [ダウンロード](http://docs.appiaries.com/?p=14416) します。
+2. ダウンロードしたファイルを解凍します。
+3. xcode のナビゲーションエリアにて BuildPhases を選択し、さらに Link Binary With Libraries をクリックし、現在使われているライブラリを表示させます。
+4. Library の一番下にある + ボタンを押して、出てきた領域の下にある Add Other を押して、解凍した SDK を追加します。
+5. ソースコード AppDelegate.m にて「Appiaries プッシュ通知受信機能を使う場合はコメントアウトを外して下さい」と記載された箇所のコメントアウトを外して下さい。  
+（コメントにおいて @FIXME と書かれている部分です）
+6. アピアリーズとの連携のため、AppDelegate.m で外したコメントアウトのうち、続けて以下のパラメータを設定する必要があります。
+7. アピアリーズで契約した**「データストア ID」**を baas.config.datastoreID 設定します。
+8. アピアリーズで登録した**「アプリ ID」**を baas.config.applicationID 設定します。
+9. アピアリーズで登録したアプリの**「アプリトークン」**を baas.config.applicationToken 設定します。
 
 
 ### p12証明書を設定する
