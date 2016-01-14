@@ -20,11 +20,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //SDKを有効化する
-    //@FIXME: Appieariesセッティング値修正し、コメントを外す
-//    baas.config.datastoreID = @"_sandbox";
-//    baas.config.applicationID = @"APP_ID";
-//    baas.config.applicationToken = @"APP_TOKEN";
-//    [baas activate];
+  /*
+   * Appiaries プッシュ通知受信機能を使う場合はコメントアウトを外して下さい.
+   * @FIXME: Appieariesセッティング値修正し、コメントを外す
+    baas.config.datastoreID = @"_sandbox";
+    baas.config.applicationID = @"APP_ID";
+    baas.config.applicationToken = @"APP_TOKEN";
+    [baas activate];
+  */
     
     // APNs: プッシュ通知機能利用登録（デバイストークン発行要求）
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
@@ -86,15 +89,18 @@
     [userDefaults setObject:devTokenString forKey:@"deviceToken"];
     
     // デバイスを登録する
-    //@FIXME: Appieariesコメント外す
-//    ABDevice *device = [ABDevice deviceWithRawDeviceToken:deviceToken];
-//    [baas.device register:device block:^(ABResult *ret, NSError *error){
-//        if (error == nil) {
-//            NSLog(@"SUCCESS: registered device token: %@", device.deviceToken);
-//        } else {
-//            NSLog(@"ERROR: %@", error.description);
-//        }
-//    }];
+  /*
+   * Appiaries プッシュ通知受信機能を使う場合はコメントアウトを外して下さい.
+   * @FIXME: Appieariesコメント外す
+    ABDevice *device = [ABDevice deviceWithRawDeviceToken:deviceToken];
+    [baas.device register:device block:^(ABResult *ret, NSError *error){
+        if (error == nil) {
+            NSLog(@"SUCCESS: registered device token: %@", device.deviceToken);
+        } else {
+            NSLog(@"ERROR: %@", error.description);
+        }
+    }];
+  */
 }
 
 // APNs: デバイストークン発行失敗時ハンドラ
@@ -117,31 +123,37 @@
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
     // インスタンス変数にプッシュ通知メッセージを保存しておく
-    //@FIXME: Appieariesコメント外す
-//    _msg = [baas.push messageWithDictionary:userInfo];
-//    
-//    // プッシュ通知メッセージを表示
-//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:_msg[@"subject"]
-//                                                        message:_msg.message
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"キャンセル"
-//                                              otherButtonTitles:@"既読", nil];
-//    [alertView show];
+  /*
+   * Appiaries プッシュ通知受信機能を使う場合はコメントアウトを外して下さい.
+   * @FIXME: Appieariesコメント外す
+    _msg = [baas.push messageWithDictionary:userInfo];
+    
+    // プッシュ通知メッセージを表示
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:_msg[@"subject"]
+                                                        message:_msg.message
+                                                       delegate:self
+                                              cancelButtonTitle:@"キャンセル"
+                                              otherButtonTitles:@"既読", nil];
+    [alertView show];
+  */
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    //@FIXME: Appieariesコメント外す
-//    if (buttonIndex == 1) {
-//        if (_msg.pushId) {
-//            // 開封通知 (非同期)
-//            [_msg openWithBlock:^(ABResult *result, ABError *error){
-//                if (error == nil) {
-//                    NSLog(@"SUCCESS: status=%ld", result.code);
-//                } else {
-//                    NSLog(@"ERROR: %@", error.description);
-//                }
-//            }];
-//        }
-//    }
+  /*
+   * Appiaries プッシュ通知受信機能を使う場合はコメントアウトを外して下さい.
+   * @FIXME: Appieariesコメント外す
+   if (buttonIndex == 1) {
+       if (_msg.pushId) {
+           // 開封通知 (非同期)
+           [_msg openWithBlock:^(ABResult *result, ABError *error){
+               if (error == nil) {
+                   NSLog(@"SUCCESS: status=%ld", result.code);
+               } else {
+                   NSLog(@"ERROR: %@", error.description);
+               }
+           }];
+       }
+   }
+   */
 }
 @end
