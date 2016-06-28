@@ -18,11 +18,11 @@ static NSString *const kDefaultStartUrl = @"http://example.com";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *urlString = kDefaultStartUrl;
+    NSURL *url = [NSURL URLWithString:kDefaultStartUrl];
     if (self.initialPath != nil){
-        urlString = [NSString stringWithFormat:@"%@%@", urlString, self.initialPath];
+        url = [url URLByAppendingPathComponent:self.initialPath];
     }
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 - (void)didReceiveMemoryWarning {
